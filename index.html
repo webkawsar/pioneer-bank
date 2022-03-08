@@ -79,19 +79,29 @@
         // deposit button event handler
         document.getElementById("deposit").addEventListener("click", () => {
 
-            const depositNumber = getInputNumber("depositAmount")
-            updateSpanText("currentDeposit", depositNumber);
-            updateSpanText("currentBalance", depositNumber);
-            document.getElementById("depositAmount").value = "";
+            const depositNumber = getInputNumber("depositAmount");
+            
+            if(depositNumber > 0){
+                updateSpanText("currentDeposit", depositNumber);
+                updateSpanText("currentBalance", depositNumber);
+                document.getElementById("depositAmount").value = "";
+            } else {
+                alert("Please add deposit amount");
+            }
         })
 
         // withdraw button event handler
         document.getElementById("withdraw").addEventListener("click", () => {
 
             const withdrawNumber = getInputNumber("withdrawAmount");
-            updateSpanText("currentWithdraw", withdrawNumber);
-            updateSpanText("currentBalance", -1 * withdrawNumber);
-            document.getElementById("withdrawAmount").value = "";
+            if(withdrawNumber > 0){
+                updateSpanText("currentWithdraw", withdrawNumber);
+                updateSpanText("currentBalance", -1 * withdrawNumber);
+                document.getElementById("withdrawAmount").value = "";
+            } else {
+                alert("Please add withdraw amount");
+            }
+            
         })
 
 
